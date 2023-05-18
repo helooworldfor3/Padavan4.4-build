@@ -37,13 +37,13 @@ jobs:
         pkg-config zlib1g-dev libgmp3-dev libmpc-dev libmpfr-dev libncurses5-dev libltdl-dev wget
     - name: Clone source code
       run: |
-        git clone --depth=1 https://github.com/helooworldfor3/Padavan-Minimal.git /opt/rt-n56u
+        git clone --depth=1 https://github.com/helooworldfor3/padavan-4.4-MeIsReallyBa.git /opt/rt-n56u
         cd /opt/rt-n56u/toolchain-mipsel
         sh dl_toolchain.sh
         mkdir -p /opt/images/
     - name: Build Firmware
       env:
-        TNAME: MSG1500-7615
+        TNAME: MSG1500
       run: |
         cd /opt/rt-n56u/trunk
         if [ ! -f configs/templates/$TNAME.config ] ; then
@@ -74,8 +74,8 @@ jobs:
         echo "CONFIG_FIRMWARE_INCLUDE_SHADOWSOCKS_LIBEV_CLIENT=n" >> .config #simple-obfs混淆插件
         echo "CONFIG_FIRMWARE_INCLUDE_SHADOWSOCKS_RUST_CLIENT=n" >> .config #simple-obfs混淆插件
         ##广告管理##
-        echo "CONFIG_FIRMWARE_INCLUDE_ADBYBY=n" >> .config #adbyby plus+
-        echo "CONFIG_FIRMWARE_INCLUDE_ADGUARDHOME=y" >> .config
+        echo "CONFIG_FIRMWARE_INCLUDE_ADBYBY=y" >> .config #adbyby plus+
+        echo "CONFIG_FIRMWARE_INCLUDE_ADGUARDHOME=n" >> .config
         ##DNS服务##
         echo "CONFIG_FIRMWARE_INCLUDE_SMARTDNS=y" >> .config #smartdns
         echo "CONFIG_FIRMWARE_INCLUDE_ADGUARDHOME=n" >> .config #adg DNS去AD
@@ -91,8 +91,8 @@ jobs:
         ##流控QOS##
         echo "CONFIG_FIRMWARE_INCLUDE_SQM=n" >> .config #SQM QOS
         #CPU超频##
-        echo "CONFIG_FIRMWARE_INCLUDE_OC=n" >> .config #CPU超频开关
-        echo 'CONFIG_FIRMWARE_MT7621_OC="0x362"' >> .config #此处填写对应频率的十六进制：1000Mhz=0x312 1100Mhz=0x362 1120Mhz=0x372 1200Mhz=0x3B2
+        echo "CONFIG_FIRMWARE_INCLUDE_OC=y" >> .config #CPU超频开关
+        echo 'CONFIG_FIRMWARE_MT7621_OC="0x372"' >> .config #此处填写对应频率的十六进制：1000Mhz=0x312 1100Mhz=0x362 1120Mhz=0x372 1200Mhz=0x3B2
         echo "CONFIG_FIRMWARE_INCLUDE_ALDRIVER=n" >> .config  #阿里云盘  ~3m
         
         #网易云解锁
