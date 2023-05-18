@@ -75,9 +75,9 @@ jobs:
         echo "CONFIG_FIRMWARE_INCLUDE_SHADOWSOCKS_RUST_CLIENT=n" >> .config #simple-obfs混淆插件
         ##广告管理##
         echo "CONFIG_FIRMWARE_INCLUDE_ADBYBY=n" >> .config #adbyby plus+
-        echo "CONFIG_FIRMWARE_INCLUDE_ADGUARDHOME=n" >> .config
+        echo "CONFIG_FIRMWARE_INCLUDE_ADGUARDHOME=y" >> .config
         ##DNS服务##
-        echo "CONFIG_FIRMWARE_INCLUDE_SMARTDNS=y" >> .config #smartdns
+        echo "CONFIG_FIRMWARE_INCLUDE_SMARTDNS=n" >> .config #smartdns
         echo "CONFIG_FIRMWARE_INCLUDE_ADGUARDHOME=n" >> .config #adg DNS去AD
         ##内网穿透服务##
         echo "CONFIG_FIRMWARE_INCLUDE_ZEROTIER=n" >> .config #zerotier ~1.3M
